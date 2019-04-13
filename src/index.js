@@ -8,6 +8,20 @@ import rootReducer from "./rootReducer";
 
 import "./styles.css";
 
+import styled, { css } from 'styled-components'
+
+const Wrapper = styled.section`
+    background: palevioletred;
+    color: white;
+
+  ${props =>
+    props.primary &&
+    css`
+      background: papayawhip;
+      color: green;
+    `};
+`;
+
 const store = createStore(
     rootReducer,
     applyMiddleware(thunk)
@@ -16,7 +30,9 @@ const store = createStore(
 function App() {
     return (
         <div className="App">
-            <ProductList />
+            <Wrapper primary>
+                <ProductList />
+            </Wrapper>
         </div>
     );
 }
